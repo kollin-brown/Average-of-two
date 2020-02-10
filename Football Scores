@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+  string outcome;
+
+  string pat;
+int score=0;
+ cout<<"Use the key below "<<endl;
+ cout<<"TD-Touchdown"<<endl;
+ cout<<"FG-Field Goal"<<endl;
+ cout<<"TO-Turnover"<<endl;
+ cout<<"ST-Saftey"<<endl;
+ cout<<endl;
+cout<<"What happened?"; getline(cin, outcome);
+if(outcome=="TD"){
+  cout<<"Offense scores Touchdown!";
+  score=score+6;
+  cout<<endl;
+  cout<< "kick or go for 2: "; getline(cin, pat);
+  if (pat=="kick"){
+    score=score +1;
+
+  }else if(pat=="go for 2")
+  score=score +2;
+}
+if (outcome=="FG"){
+  cout<<"Field Goal!";
+cout<< endl;
+  score=score+3;
+}
+if(outcome=="ST"){
+  cout<< "Saftey!";
+  score=score+2;
+}
+if (outcome=="TO"){
+  cout<<"Turnover! No points";
+}cout<<"Invalid input refer to Key!"<<endl<<endl;
+  cout<<"Scoreboard: "<<score<<" points";
+}

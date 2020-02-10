@@ -1,0 +1,157 @@
+#include <iostream>
+using namespace std;
+
+float myaverage(int *, int);
+int mymode(int*, int);
+int* getdata(int*);
+float mymedian(int*,int);
+void bsort(int *, int);
+void parray(int *, int);
+
+int main() {
+  int *size = new int;
+  int *mydata = nullptr;
+
+  mydata = getdata(size);
+  bsort(mydata,*size); // sort the array
+  cout << "\n---- Results--------\n";
+  cout << "Data: ";
+  parray(mydata,*size);
+
+  cout << "Mean: " << myaverage(mydata,*size) << endl;
+  cout << "Median: " << mymedian(mydata,*size) << endl;
+  cout << "Mode: " << mymode(mydata,*size) << endl;
+
+
+  delete size;
+  delete [] mydata;
+
+}
+
+
+float mymedian(int *a, int size)
+{
+
+  int temp;
+  float answer;
+  int middle;
+  temp = size/2;
+   if (size%2 == 0)
+   {
+
+      middle = temp - 1;
+      answer = float(*(a + middle) + *(a+middle+1))/2.0;
+   }
+   else
+   {
+     answer = float(*(a+temp));
+   }
+
+  return answer;
+
+
+}
+
+int * getdata(int *s)
+{
+  cout << "How many students where surveyed: ";
+  cin >> *s;
+
+  int *output = new int[*s];
+
+  for (int i = 0; i < *s; i++)
+  {
+    cout << "Enter Data Point " << i + 1 <<" :";
+    cin >> *(output + i);
+  }
+
+  return output;
+
+}
+
+
+float myaverage(int *a, int size)
+{
+  float output = 0;
+  for (int i=0; i < size; i++)
+    output = output + *(a+i);
+
+  return output/float(size);
+
+}
+
+int mymode(int *a, int size)
+{
+
+
+  int current_mode = *a;
+  int current_count = 1;
+  int h_mode = current_mode;
+  int h_count = current_count;
+
+
+  for (int i=1; i < size; i++)
+  {
+    if (current_mode == *(a+i))
+    {
+      current_count++;
+      h_count =  current_count;
+    }
+    else
+    {
+
+      if (current_count > h_count)
+      {
+        h_count = current_count;
+        h_mode = current_mode;
+      }
+
+      // reset
+
+      current_mode = *(a+i);
+      current_count = 1;
+
+    }
+  }
+
+  if (h_count > 1)
+  {
+    return h_mode;
+  }
+  else
+  {
+    return -1;
+  }
+
+}
+
+
+void bsort(int *y, int size)
+{
+  bool sp;
+  int temp;
+  do
+  {
+    sp = false;
+    for (int i = 0; i < size-1; i++)
+    {
+
+      if (*(y+i) < *(y+i+1))
+      {
+        sp = true;
+        temp = *(y+i);
+        *(y+i) = *(y+i+1);
+        *(y+i+1) = temp;
+      }
+
+    }
+
+  }while (sp);
+}
+
+void parray(int *y, int size)
+{
+  for (int i=0; i < size; i++)
+    cout << *(y+i) << " ";
+  cout << endl;
+}

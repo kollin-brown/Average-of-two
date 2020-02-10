@@ -1,0 +1,8 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+  cout << "KOLLIN\nO    I\nL    L\nL    L\nI    O\nNILLOK";
+
+
+}

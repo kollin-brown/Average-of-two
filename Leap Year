@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main ()
+{
+  // Gets the number from the user.
+  int num;
+  cout << "Enter a year:";
+  cin >> num;
+
+
+  // Add your code here.
+ if(num%4==0){
+    if(num%100==0){
+      if(num%400==0){
+        cout<<"yes";
+
+    }else
+    cout<<"no";
+
+    }else
+    cout<<"yes";
+      }else
+      cout<<"no";
+
+  return 0;
+}

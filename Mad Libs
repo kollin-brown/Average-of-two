@@ -1,0 +1,33 @@
+#include <iostream>
+// We have to include <string> here so we can use the string type below
+#include <string>
+using namespace std;
+
+int main() {
+
+
+
+
+    // Read more nouns, verbs and adjectives here.
+
+
+    // Then write out the story here.
+    string noun;
+    string verb;
+    string adjective;
+
+    cout << "enter a noun: ";
+    cin >> noun;
+    cout << "enter a verb: ";
+    cin >> verb;
+    cout << "enter an adjective:";
+    cin >> adjective;
+
+    cout << "One day " << noun;
+    cout << " went to the animal shelter. " << noun;
+    cout << " looked at the dog and " << verb;
+    cout << " the dog very " << adjective;
+
+
+
+}

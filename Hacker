@@ -1,0 +1,112 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <cmath>
+
+using namespace std;
+
+void aprint(char *, int);
+int * readfile(int *);
+void hacker(int *, int);
+
+
+
+int main() {
+
+
+  int * tempf;
+  int * sizef = new int;
+
+  tempf = readfile(sizef);
+  hacker(tempf,*sizef);
+
+
+  delete [] tempf;
+  delete sizef;
+
+}
+
+int * readfile(int * size)
+{
+
+  ifstream infile;
+  infile.open("message.txt"); // open file
+  infile >> *size;
+
+  int * data = new int[*size];
+
+  for (int i=0; i < *size; i++)
+  {
+    infile >> *(data + i);
+  }
+
+  infile.close(); // close file
+
+  return data;
+
+}
+
+
+
+void hacker(int * message, int size)
+{
+  int test = 101;
+  int space = 0;
+  int temp;
+  bool comeout = false;
+  char correct = 'y';
+  char * guess = new char[size];
+  cout << "\n---- hacking \n";
+  for (int a=1; a < test; a++)
+  {
+    space = 0;
+    for (int b=1; b < test; b++)
+    {
+
+      comeout = false;
+      for (int i=0; i < size; i++)
+      {
+        temp = char(round((*(message+i) - b)/a));
+
+        if (temp < 32 || temp > 126)
+        {
+          comeout = true;
+          break; // not a possible param set
+        }
+        else
+        {
+           if (temp == ' ')
+            space++;
+
+          *(guess+i) = temp;
+        }
+      }
+
+
+      if (!comeout && space != 0)
+      {
+        cout << "a: " << a << " b: " << b << endl;
+        aprint(guess,  size);
+        cout << "Correct y/n: ";
+        cin >> correct;
+        if (correct == 'y')
+        {
+          a = test + 1;
+          break;
+        }
+      }
+
+
+    }
+  }
+
+  delete [] guess;
+}
+
+void aprint(char * a,int size)
+{
+
+  for (int i=0; i < size; i++)
+    cout << *(a+i);
+  cout << endl;
+}

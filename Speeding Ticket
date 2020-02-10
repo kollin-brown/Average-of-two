@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int speed_limit = 45;
+    int speed;
+    cout<< "Enter speed in MPH:" ;
+    cin>> speed;
+
+    if (speed >= 75) {
+      cout<< "You are way over the speed limit. You will be fined $100";
+    }else if(speed >= 65){
+      cout<< "You are going way over the speed limit. You will be fined $75";
+    }else if (speed >= 55){
+      cout<< " You are going over the speed limit. You will be fined $50";
+    }else if ( speed >=46){
+      cout<< "You are going over the speed limmit. But you wont be fined";
+    }
+}
